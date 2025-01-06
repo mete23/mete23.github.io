@@ -1,4 +1,4 @@
-const photo_width = 300; //for scaling the photo
+const photo_width = window.width; //for scaling the photo
 var photo_height = 0; //will be computed
 var streaming = false;
 

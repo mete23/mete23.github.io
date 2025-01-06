@@ -1,7 +1,5 @@
-function init() {
+function initGyro() {
     console.log("Tilt.js loaded");
-    window.addEventListener("deviceorientation", handleOrientation, true);
-
 
     if (window.DeviceMotionEvent) {
         window.addEventListener('devicemotion', (event) => {
@@ -12,12 +10,6 @@ function init() {
     } else {
         document.getElementById('acceleration').innerText = 'Accelerometer not supported on this device.';
     }
-
-    function handleOrientation(orientation) {
-        console.log(orientation);
-        console.log(orientation.alpha);
-        document.getElementById("orientation").innerHTML = "orientation.alpha; " + orientation.alpha + "<br>orientation.beta: " + orientation.beta + "<br>orientation.gamma: " + orientation.gamma;
-    }
 }
 
-window.addEventListener("load", init, false);
+window.addEventListener("load", initGyro, false);
