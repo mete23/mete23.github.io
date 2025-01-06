@@ -1,7 +1,10 @@
 function initGyro() {
     console.log("Tilt.js loaded");
 
-    if (window.DeviceMotionEvent) {
+    if ( typeof( window.DeviceMotionEvent ) !== "undefined" && typeof( window.DeviceMotionEvent.requestPermission ) === "function" ) {
+        // (optional) Do something before API request prompt.
+        DeviceMotionEvent.requestPermission()
+    //if (window.DeviceMotionEvent) {
         window.addEventListener('devicemotion', (event) => {
             const acceleration = event.accelerationIncludingGravity;
             document.getElementById('acceleration').innerText =
