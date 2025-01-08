@@ -65,6 +65,7 @@
     <div class="photo_output">
         <img id="captured_photo" alt="The captured photo will appear here!" />
     </div>
+    <button onclick="DeviceOrientationEvent.requestPermission()">Download photo</button>
     <a id="acceleration">Gyro</a>
 
 <a id="download_link">Download photo</a>
@@ -72,8 +73,21 @@
 
 
 
-
-
+<script>
+    if (window.DeviceMotionEvent) {
+      window.addEventListener('deviceorientation', function(event) {
+        var alpha = event.alpha; // Rotation um die Z-Achse (vertikal)
+        var beta = event.beta;   // Rotation um die X-Achse (von vorne nach hinten)
+        var gamma = event.gamma;  // Rotation um die Y-Achse (von links nach rechts)
+    
+        document.getElementById("alpha").innerHTML = alpha.toFixed(2);
+        document.getElementById("beta").innerHTML = beta.toFixed(2);
+        document.getElementById("gamma").innerHTML = gamma.toFixed(2);
+      });
+    } else {
+      alert("Gyroskop wird von diesem Gerät nicht unterstützt.");
+    }
+    </script>
 
     <script src="/bootstrap-5.3.3-dist/js/bootstrap.js"></script>
     <script src="jquery-3.7.1.js"></script>
