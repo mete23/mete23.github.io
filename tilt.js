@@ -44,7 +44,7 @@ function initGyro() {
 function rotateByGyro(acceleration) {
     console.log("rotateByGyro called with acceleration:", acceleration);
     // Calculate the tilt angle using atan2
-    var angle = Math.atan2(acceleration.y, acceleration.x) * (360 / Math.PI);
+    var angle = Math.atan2(acceleration.y, acceleration.x) * (90 / Math.PI);
     var div = document.querySelector('#webcam');
 
     div.style.webkitTransform = 'rotate('+angle+'deg)'; 
