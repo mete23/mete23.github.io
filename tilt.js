@@ -1,8 +1,6 @@
 function initGyro() {
     console.log("Tilt.js loaded");
 
-
-
     if (typeof(window.DeviceMotionEvent) !== "undefined" && typeof(window.DeviceMotionEvent.requestPermission) === "function") {
         console.log("DeviceMotionEvent.requestPermission is available");
         // Request permission for iOS 13+ devices
@@ -16,7 +14,7 @@ function initGyro() {
                         console.log("Device motion event detected");
                         document.getElementById('acceleration').innerText =
                             `Acceleration: x = ${acceleration.x.toFixed(2)}, y = ${acceleration.y.toFixed(2)}, z = ${acceleration.z.toFixed(2)}`;
-                        rotateByGyro(acceleration.x);
+                        rotateByGyro(acceleration);
                         console.log("Acceleration data processed");
                     });
                 } else {
@@ -35,7 +33,7 @@ function initGyro() {
             console.log("Device motion event detected");
             document.getElementById('acceleration').innerText =
                 `Acceleration: x = ${acceleration.x.toFixed(2)}, y = ${acceleration.y.toFixed(2)}, z = ${acceleration.z.toFixed(2)}`;
-            rotateByGyro(acceleration.x);
+            rotateByGyro(acceleration);
         });
     } else {
         console.log("DeviceMotionEvent not supported");
@@ -43,16 +41,17 @@ function initGyro() {
     }
 }
 
-function rotateByGyro(value) {
-    console.log("rotateByGyro called with value:", value);
-    var deg = 90 * (value / 10);
+function rotateByGyro(acceleration) {
+    console.log("rotateByGyro called with acceleration:", acceleration);
+    // Calculate the tilt angle using atan2
+    var angle = Math.atan2(acceleration.y, acceleration.x) * (180 / Math.PI);
     var div = document.querySelector('#webcam');
 
-    div.style.webkitTransform = 'rotate('+deg+'deg)'; 
-    div.style.mozTransform    = 'rotate('+deg+'deg)'; 
-    div.style.msTransform     = 'rotate('+deg+'deg)'; 
-    div.style.oTransform      = 'rotate('+deg+'deg)'; 
-    div.style.transform       = 'rotate('+deg+'deg)'; 
+    div.style.webkitTransform = 'rotate('+angle+'deg)'; 
+    div.style.mozTransform    = 'rotate('+angle+'deg)'; 
+    div.style.msTransform     = 'rotate('+angle+'deg)'; 
+    div.style.oTransform      = 'rotate('+angle+'deg)'; 
+    div.style.transform       = 'rotate('+angle+'deg)'; 
 }
 
 window.addEventListener("load", initGyro, false);
