@@ -74,6 +74,11 @@
     height: auto;
 }
 
+#captured_photo {
+    width: 100%;
+    height: auto;
+}
+
 .title {
     font-family: 'Arial', sans-serif;
     font-size: 3em;
