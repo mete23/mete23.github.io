@@ -11,11 +11,9 @@ function initGyro() {
                     console.log("Permission granted");
                     window.addEventListener('devicemotion', (event) => {
                         const acceleration = event.accelerationIncludingGravity;
-                        console.log("Device motion event detected");
                         document.getElementById('acceleration').innerText =
                             `Acceleration: x = ${acceleration.x.toFixed(2)}, y = ${acceleration.y.toFixed(2)}, z = ${acceleration.z.toFixed(2)}`;
                         rotateByGyro(acceleration);
-                        console.log("Acceleration data processed");
                     });
                 } else {
                     console.log("Permission denied");
@@ -30,7 +28,6 @@ function initGyro() {
         // For devices that do not require permission
         window.addEventListener('devicemotion', (event) => {
             const acceleration = event.accelerationIncludingGravity;
-            console.log("Device motion event detected");
             document.getElementById('acceleration').innerText =
                 `Acceleration: x = ${acceleration.x.toFixed(2)}, y = ${acceleration.y.toFixed(2)}, z = ${acceleration.z.toFixed(2)}`;
             rotateByGyro(acceleration);
@@ -42,7 +39,6 @@ function initGyro() {
 }
 
 function rotateByGyro(acceleration) {
-    console.log("rotateByGyro called with acceleration:", acceleration);
     // Calculate the tilt angle using atan2
     //var angle = Math.atan2(acceleration.y, acceleration.x) * (180 / Math.PI);
     var angle = acceleration.x * 10;
