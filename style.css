@@ -1,9 +1,77 @@
+#background {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color: lightgray; /* Hintergrundfarbe */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black; /* Rahmen für bessere Sichtbarkeit */
+}
+
+#reference {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed black; /* Referenzrahmen */
+    box-sizing: border-box;
+    z-index: 1; /* Hintergrund hinter dem Kreuz */
+}
+
 #rectangle {
+    position: relative;
     width: 200px;
-    height: 100px;
+    height: 200px;
+    z-index: 2; /* Kreuz über dem Hintergrund */
+}
+
+#rectangle::before,
+#rectangle::after {
+    content: '';
+    position: absolute;
     background-color: red;
+}
+
+#rectangle::before {
+    width: 100%;
+    height: 10px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+#rectangle::after {
+    width: 10px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #webcam {
     transform: scaleX(-1);
+}
+
+.title {
+    font-family: 'Arial', sans-serif;
+    font-size: 3em;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 1.2em;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    z-index: -1;
+    border-radius: 10px;
 }
