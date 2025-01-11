@@ -21,15 +21,11 @@
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-settings-tab" data-bs-toggle="pill" data-bs-target="#pills-settings"
-                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Settings</button>
+                type="button" role="tab" aria-controls="pills-settings" aria-selected="false">Settings</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-editing-tab" data-bs-toggle="pill" data-bs-target="#pills-editing"
                 type="button" role="tab" aria-controls="pills-editing" aria-selected="false">Editing</button>
-        </li>
-
-        <li>
-            <button class="btn btn-light" id="permission_button" onclick="downloadPhoto()">Request Sensor Permissions</button>
         </li>
     </ul>
 
@@ -59,8 +55,15 @@
             <div class="photo_output">
                 <img id="captured_photo" alt="The captured photo will appear here!" />
             </div>
-
-
+            <button type="button" class="btn btn-secondary" id="grayscale_button">Grayscale</button>
+            <button type="button" class="btn btn-secondary" id="sepia_button">Sepia</button>
+            <button type="button" class="btn btn-secondary" id="invert_button">Invert</button>
+            <button type="button" class="btn btn-secondary" id="brightness_button">Brightness</button>
+            <button type="button" class="btn btn-secondary" id="contrast_button">Contrast</button>
+            <button type="button" class="btn btn-secondary" id="saturation_button">Saturation</button>
+            <button type="button" class="btn btn-secondary" id="blur_button">Blur</button>
+            <button type="button" class="btn btn-secondary" id="sharpen_button">Sharpen</button>
+            <button type="button" class="btn btn-secondary" id="hue_rotate_button">Hue Rotate</button>
         </div>
     </div>
 

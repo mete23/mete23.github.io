@@ -130,3 +130,8 @@
     margin-top: 20px;
     cursor: pointer;
 }
+
+body {
+    background-color: black;
+    color: white;
+}
