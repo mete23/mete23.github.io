@@ -65,7 +65,7 @@
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    z-index: 2; 
+    z-index: 2;
 }
 
 #webcam {
@@ -77,6 +77,7 @@
 #captured_photo {
     width: 100%;
     height: auto;
+    transform: scaleX(-1);
 }
 
 .title {
