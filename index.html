@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -16,9 +16,12 @@
     <br><br>
     <button onclick="webcam('pause')">Pause</button>
     <button onclick="webcam('play')">Start</button>
-    <video autoplay playsinline id="webcam"></video>
-    <div id="reference"></div>
-    <div id="rectangle"></div>
+    <div id="container">
+        <video autoplay playsinline id="webcam"></video>
+        <div id="rectangle_container">
+            <div id="rectangle"></div>
+        </div>
+    </div>
     <button type="button" class="btn" id="capture_button">take photo</button>
 
     <!-- This canvas is hidden and used to store  -->
