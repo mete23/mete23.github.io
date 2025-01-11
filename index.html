@@ -1,34 +1,77 @@
 <!DOCTYPE html>
 <html lang="de">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mobile Com</title>
-    <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
+    
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            Mobile Com
+        </title>
+        <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    
+    <body>
     <h1 class="title">Image Tool</h1>
+
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-webcam-tab" data-bs-toggle="pill" data-bs-target="#pills-webcam"
+                type="button" role="tab" aria-controls="pills-webcam" aria-selected="true">Camera</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-settings-tab" data-bs-toggle="pill" data-bs-target="#pills-settings"
+                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Settings</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-editing-tab" data-bs-toggle="pill" data-bs-target="#pills-editing"
+                type="button" role="tab" aria-controls="pills-editing" aria-selected="false">Editing</button>
+        </li>
+    </ul>
+
+
+
+
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-webcam" role="tabpanel" aria-labelledby="pills-webcam-tab">
+            <div id="container">
+                <video autoplay playsinline id="webcam"></video>
+                <div id="rectangle_container">
+                    <div id="rectangle"></div>
+                </div>
+            </div>
+            <button type="button" class="btn" id="capture_button">
+                take photo
+            </button>
+        </div>
+        <div class="tab-pane fade" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
+            nuu
+        
+        </div>
+        <div class="tab-pane fade" id="pills-editing" role="tabpanel" aria-labelledby="pills-editing-tab">
+            <div class="photo_output">
+                <img id="captured_photo" alt="The captured photo will appear here!" />
+            </div>
+
+
+        </div>
+    </div>
+
+
 
     <a>Kamera:</a>
     <br><br>
-    <button onclick="webcam('pause')">Pause</button>
-    <button onclick="webcam('play')">Start</button>
-    <div id="container">
-        <video autoplay playsinline id="webcam"></video>
-        <div id="rectangle_container">
-            <div id="rectangle"></div>
-        </div>
-    </div>
-    <button type="button" class="btn" id="capture_button">take photo</button>
+    <button onclick="webcam('pause')">
+        Pause
+    </button>
+    <button onclick="webcam('play')">
+        Start
+    </button>
+
 
     <!-- This canvas is hidden and used to store the captured photo -->
     <canvas id="photo_canvas" style="display: none;"></canvas>
-    <div class="photo_output">
-        <img id="captured_photo" alt="The captured photo will appear here!" />
-    </div>
+
     <button onclick="DeviceOrientationEvent.requestPermission()">Request Gyro Permissions</button>
     <a id="acceleration">Gyro</a>
 
