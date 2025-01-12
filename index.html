@@ -14,7 +14,7 @@
     <body>
     <h1 class="title">Image Tool</h1>
 
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="pills-webcam-tab" data-bs-toggle="pill" data-bs-target="#pills-webcam"
                 type="button" role="tab" aria-controls="pills-webcam" aria-selected="true">Camera</button>
@@ -27,6 +27,16 @@
             <button class="nav-link" id="pills-editing-tab" data-bs-toggle="pill" data-bs-target="#pills-editing"
                 type="button" role="tab" aria-controls="pills-editing" aria-selected="false">Editing</button>
         </li>
+        <div class="spacediv"></div>
+
+        <li>
+            <button type="button" class="btn btn-secondary" id="capture_button">Take photo</button>
+        </li>
+        <div class="spacediv"></div>
+        <li>
+            <button class="btn btn-secondary" onclick="DeviceOrientationEvent.requestPermission()">Request Gyro Permissions</button>
+        </li>
+        <div class="spacediv"></div>
     </ul>
 
 
@@ -40,10 +50,6 @@
                     <div id="rectangle"></div>
                     <div id="center_line"></div> <!-- Neue Linie hinzugefügt -->
                 </div>
-
-                <button type="button" class="btn btn-primary" id="capture_button">
-                    take photo
-                </button>
             </div>
 
         </div>
@@ -70,21 +76,19 @@
     </div>
 
 
-
-    <a>Kamera:</a>
+    <!-- <a>Kamera:</a>
     <br><br>
     <button onclick="webcam('pause')">
         Pause
     </button>
     <button onclick="webcam('play')">
         Start
-    </button>
-
+    </button> -->
 
     <!-- This canvas is hidden and used to store the captured photo -->
     <canvas id="photo_canvas" style="display: none;"></canvas>
 
-    <button onclick="DeviceOrientationEvent.requestPermission()">Request Gyro Permissions</button>
+    
     <a id="acceleration">Gyro</a>
 
     <a id="download_link">Download photo</a>

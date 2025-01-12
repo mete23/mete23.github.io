@@ -45,3 +45,7 @@
     position: absolute;
     background-color: red;
 }
+
+.spacediv {
+    width: 0.2rem;
+}
