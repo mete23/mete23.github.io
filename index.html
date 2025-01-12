@@ -86,6 +86,12 @@
                 <p>The application is built using HTML, CSS, and JavaScript. It leverages the getUserMedia API to access the webcam and capture photos. The captured image is drawn onto a hidden canvas element, where various filters and effects are applied using CSS and JavaScript. The edited image can then be saved to the user's device.</p>
                 <h3 style="color: yellow">Disclaimer:</h3>
                 <p>On iPhone, you need to click the "Request Gyro Permissions" button first and then reload the website for the permissions to take effect.</p>
+
+                <h3>Current Sensor Values</h3>
+                <p>
+                    <a id="acceleration">Gyro</a>
+                </p>
+
             </div>
             
         </div>
@@ -120,7 +126,6 @@
 <canvas id="photo_canvas" style="display: none;"></canvas>
 
 
-<button type="button" class="btn btn-info" onclick="DeviceMotionEvent.requestPermission()">Request Gyro Permissions</button>
 
 <!-- <a>Kamera:</a>
     <br><br>
@@ -134,7 +139,6 @@
     <!-- This canvas is hidden and used to store the captured photo -->
 
     
-    <a id="acceleration">Gyro</a>
 
     
 
