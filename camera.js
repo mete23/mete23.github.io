@@ -6,6 +6,8 @@ let canvas = null;
 let capturedPhoto = null;
 let video = null;
 let downloadLink = null;
+let originalImageData = null; // Store the original image data
+let lastImageData = null; // Store the last image data
 
 function webcam(btn) {
     if (btn === 'pause') {
@@ -27,6 +29,9 @@ function init() {
     const blurButton = document.querySelector('#blur_button');
     const sharpenButton = document.querySelector('#sharpen_button');
     const hueRotateButton = document.querySelector('#hue_rotate_button');
+    const resetButton = document.querySelector('#reset_button');
+    const undoButton = document.querySelector('#undo_button');
+    const editingTabButton = document.querySelector('#pills-editing-tab');
     canvas = document.querySelector('#photo_canvas');
     capturedPhoto = document.querySelector('#captured_photo');
     downloadLink = document.querySelector('#download_link');
@@ -69,39 +74,47 @@ function init() {
 
     // Event listeners for filter buttons
     grayscaleButton.addEventListener('click', (event) => {
-        applyGrayscale();
+        applyFilter(applyGrayscale);
         event.preventDefault();
     }, false);
     sepiaButton.addEventListener('click', (event) => {
-        applySepia();
+        applyFilter(applySepia);
         event.preventDefault();
     }, false);
     invertButton.addEventListener('click', (event) => {
-        applyInvert();
+        applyFilter(applyInvert);
         event.preventDefault();
     }, false);
     brightnessButton.addEventListener('click', (event) => {
-        applyBrightness();
+        applyFilter(applyBrightness);
         event.preventDefault();
     }, false);
     contrastButton.addEventListener('click', (event) => {
-        applyContrast();
+        applyFilter(applyContrast);
         event.preventDefault();
     }, false);
     saturationButton.addEventListener('click', (event) => {
-        applySaturation();
+        applyFilter(applySaturation);
         event.preventDefault();
     }, false);
     blurButton.addEventListener('click', (event) => {
-        applyBlur();
+        applyFilter(applyBlur);
         event.preventDefault();
     }, false);
     sharpenButton.addEventListener('click', (event) => {
-        applySharpen();
+        applyFilter(applySharpen);
         event.preventDefault();
     }, false);
     hueRotateButton.addEventListener('click', (event) => {
-        applyHueRotate();
+        applyFilter(applyHueRotate);
+        event.preventDefault();
+    }, false);
+    resetButton.addEventListener('click', (event) => {
+        resetImage();
+        event.preventDefault();
+    }, false);
+    undoButton.addEventListener('click', (event) => {
+        undoLastEffect();
         event.preventDefault();
     }, false);
 
@@ -127,8 +140,40 @@ function takePicture() {
         capturedPhoto.setAttribute('src', data);
         downloadLink.setAttribute('href', data);
         downloadLink.setAttribute('download', 'captured_photo.png');
+
+        // Store the original image data
+        originalImageData = context.getImageData(0, 0, canvas.width, canvas.height);
+        lastImageData = context.getImageData(0, 0, canvas.width, canvas.height);
+
+        // Simulate a click on the "Editing" tab button
+        document.querySelector('#pills-editing-tab').click();
     } else {
         clearCanvas();
+    }
+}
+
+// Function to apply a filter and store the last image data
+function applyFilter(filterFunction) {
+    const context = canvas.getContext('2d');
+    lastImageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    filterFunction();
+}
+
+// Function to reset the image to the original
+function resetImage() {
+    const context = canvas.getContext('2d');
+    if (originalImageData) {
+        context.putImageData(originalImageData, 0, 0);
+        updateCapturedPhoto();
+    }
+}
+
+// Function to undo the last effect
+function undoLastEffect() {
+    const context = canvas.getContext('2d');
+    if (lastImageData) {
+        context.putImageData(lastImageData, 0, 0);
+        updateCapturedPhoto();
     }
 }
 
