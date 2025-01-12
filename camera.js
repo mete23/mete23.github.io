@@ -1,11 +1,11 @@
-const photo_width = 640; // Set a default width for the photo
+const photo_width = 1080; // Set a default width for the photo
 let photo_height = 0; // Will be computed
 let streaming = false;
 
 let canvas = null;
 let capturedPhoto = null;
 let video = null;
-let downloadLink = null;
+let downloadButton = null;
 let originalImageData = null; // Store the original image data
 let lastImageData = null; // Store the last image data
 
@@ -32,9 +32,9 @@ function init() {
     const resetButton = document.querySelector('#reset_button');
     const undoButton = document.querySelector('#undo_button');
     const editingTabButton = document.querySelector('#pills-editing-tab');
+    downloadButton = document.querySelector('#download_button');
     canvas = document.querySelector('#photo_canvas');
     capturedPhoto = document.querySelector('#captured_photo');
-    downloadLink = document.querySelector('#download_link');
 
     // Start the video stream
     if (navigator.mediaDevices.getUserMedia) {
@@ -118,6 +118,12 @@ function init() {
         event.preventDefault();
     }, false);
 
+    // Event listener for download button click
+    downloadButton.addEventListener('click', (event) => {
+        downloadImage();
+        event.preventDefault();
+    }, false);
+
     clearCanvas();
 }
 
@@ -138,8 +144,6 @@ function takePicture() {
 
         const data = canvas.toDataURL('image/png');
         capturedPhoto.setAttribute('src', data);
-        downloadLink.setAttribute('href', data);
-        downloadLink.setAttribute('download', 'captured_photo.png');
 
         // Store the original image data
         originalImageData = context.getImageData(0, 0, canvas.width, canvas.height);
@@ -147,10 +151,18 @@ function takePicture() {
 
         // Simulate a click on the "Editing" tab button
         document.querySelector('#pills-editing-tab').click();
-        console.log('Picture taken');
     } else {
         clearCanvas();
     }
+}
+
+// Function to download the image
+function downloadImage() {
+    const data = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = data;
+    link.download = 'captured_photo.png';
+    link.click();
 }
 
 // Function to apply a filter and store the last image data
@@ -359,8 +371,6 @@ function applyHueRotate() {
 function updateCapturedPhoto() {
     const data = canvas.toDataURL('image/png');
     capturedPhoto.setAttribute('src', data);
-    downloadLink.setAttribute('href', data);
-    downloadLink.setAttribute('download', 'captured_photo.png');
 }
 
 // Initialize the webcam and elements when the window loads
