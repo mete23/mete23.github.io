@@ -16,7 +16,7 @@
         <div class="wholesite">
     <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
         <li class="navbar_brand">
-           PhotoTool 
+           PhotoTool 1
         </li>   
         <div class="spacediv"></div>
         <div class="spacediv"></div>
@@ -39,7 +39,7 @@
         </li>
         <div class="spacediv"></div>
         <li>
-            <button type="button" class="btn btn-info" onclick="requestPermissions()">Request Gyro Permissions</button>
+            <button type="button" class="btn btn-info" onclick="DeviceOrientationEvent.requestPermission()">Request Gyro Permissions</button>
         </li>
         <div class="spacediv"></div>
     </ul>
@@ -118,6 +118,7 @@
     
 </div>
 <canvas id="photo_canvas" style="display: none;"></canvas>
+<button type="button" class="btn btn-info" onclick="DeviceOrientationEvent.requestPermission()">Request Gyro Permissions</button>
 
 <!-- <a>Kamera:</a>
     <br><br>
@@ -140,8 +141,10 @@
     <script src="camera.js"></script>
     <script src="tilt.js"></script>
     <script>
-        function requestPermission() {
-            DeviceOrientationEvent.requestPermissions();
+        function requestPermissions() {
+            console.log("requesting");
+            DeviceMotionEvent.requestPermission()
+            DeviceOrientationEvent.requestPermission();
             window.alert("requested");
         }
     </script>
