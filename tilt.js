@@ -28,8 +28,8 @@ function initGyro() {
         // For devices that do not require permission
         window.addEventListener('devicemotion', (event) => {
             const acceleration = event.accelerationIncludingGravity;
-            //document.getElementById('acceleration').innerText =
-            //    `Acceleration: x = ${acceleration.x.toFixed(2)}, y = ${acceleration.y.toFixed(2)}, z = ${acceleration.z.toFixed(2)}`;
+            document.getElementById('acceleration').innerText =
+                `Acceleration: x = ${acceleration.x.toFixed(2)}, y = ${acceleration.y.toFixed(2)}, z = ${acceleration.z.toFixed(2)}`;
             rotateByGyro(acceleration);
         });
     } else {
