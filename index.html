@@ -39,7 +39,7 @@
         </li>
         <div class="spacediv"></div>
         <li>
-            <button class="btn btn-info" id="request_permission_button">Request Gyro Permissions</button>
+            <button type="button" class="btn btn-info" onclick="requestPermissions()">Request Gyro Permissions</button>
         </li>
         <div class="spacediv"></div>
     </ul>
@@ -139,6 +139,12 @@
     <script src="jquery-3.7.1.js"></script>
     <script src="camera.js"></script>
     <script src="tilt.js"></script>
+    <script>
+        function requestPermission() {
+            DeviceOrientationEvent.requestPermissions();
+            window.alert("requested");
+        }
+    </script>
 </body>
 
 </html>
