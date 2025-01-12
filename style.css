@@ -102,6 +102,7 @@
     max-height: 90vh; /* Constrain the height to 90% of the viewport height */
     border: 2px solid #ccc; /* Optional: Add a border */
     border-radius: 10px; /* Optional: Add rounded corners */
+    transform: scaleX(-1);
 }
 
 #captured_photo {
@@ -199,6 +200,7 @@ button {
     max-height: 90vh; /* Constrain the height to 90% of the viewport height */
     border: 2px solid #ccc; /* Optional: Add a border */
     border-radius: 10px; /* Optional: Add rounded corners */
+    transform: scaleX(-1);
 }
 
 .editing_container {
