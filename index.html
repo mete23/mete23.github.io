@@ -25,8 +25,8 @@
             type="button" role="tab" aria-controls="pills-webcam" aria-selected="true">Camera</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-settings-tab" data-bs-toggle="pill" data-bs-target="#pills-settings"
-            type="button" role="tab" aria-controls="pills-settings" aria-selected="false">Settings</button>
+            <button class="nav-link" id="pills-info-tab" data-bs-toggle="pill" data-bs-target="#pills-info"
+            type="button" role="tab" aria-controls="pills-info" aria-selected="false">Info</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-editing-tab" data-bs-toggle="pill" data-bs-target="#pills-editing"
@@ -58,8 +58,35 @@
             </div>
             
         </div>
-        <div class="tab-pane fade" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
-            nuu
+        <div class="tab-pane fade" id="pills-info" role="tabpanel" aria-labelledby="pills-info-tab">
+            <div class="info_container">
+                <h2>About PhotoTool</h2>
+                <p>PhotoTool is a web application that allows you to capture photos using your webcam and apply various filters and effects to enhance your images.
+                    You can save your edited photos and share them with your friends.</p>
+                <h3>Features:</h3>
+                <ul>
+                    <li>Capture photos using your webcam</li>
+                    <li>Apply filters like Grayscale, Sepia, Invert, and more</li>
+                    <li>Adjust image properties such as Brightness, Contrast, and Saturation</li>
+                    <li>Save and download your edited photos</li>
+                    <li>Undo changes and reset to the original photo</li>
+                    <li>Request Gyroscope permissions for additional features</li>
+                    <li>Responsive design for mobile and desktop devices</li>
+                </ul>
+                <h3>Instructions:</h3>
+                <ol>
+                    <li>Navigate to the Camera tab to capture a photo.</li>
+                    <li>Switch to the Editing tab to apply filters and effects.</li>
+                    <li>Use the buttons provided to adjust the image properties.</li>
+                    <li>Click the Save photo button to download your edited image.</li>
+                    <li>Use the Undo button to revert the last change.</li>
+                    <li>Click the Reset button to discard all changes and start over.</li>
+                </ol>
+                <h3>Technical Details:</h3>
+                <p>The application is built using HTML, CSS, and JavaScript. It leverages the getUserMedia API to access the webcam and capture photos. The captured image is drawn onto a hidden canvas element, where various filters and effects are applied using CSS and JavaScript. The edited image can then be saved to the user's device.</p>
+                <h3 style="color: yellow">Disclaimer:</h3>
+                <p>On iPhone, you need to click the "Request Gyro Permissions" button first and then reload the website for the permissions to take effect.</p>
+            </div>
             
         </div>
         <div class="tab-pane fade" id="pills-editing" role="tabpanel" aria-labelledby="pills-editing-tab">
