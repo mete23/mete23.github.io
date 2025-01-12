@@ -14,9 +14,12 @@
     
     <body>
         <div class="wholesite">
-        <h1 class="title">Image Tool</h1>
-        
     <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
+        <li class="navbar_brand">
+           PhotoTool 
+        </li>   
+        <div class="spacediv"></div>
+        <div class="spacediv"></div>
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="pills-webcam-tab" data-bs-toggle="pill" data-bs-target="#pills-webcam"
             type="button" role="tab" aria-controls="pills-webcam" aria-selected="true">Camera</button>
@@ -63,6 +66,7 @@
             <div class="photo_output">
                 <img id="captured_photo" alt="The captured photo will appear here!" />
             </div>
+            <a id="download_link">Download photo</a>
             <button type="button" class="btn btn-secondary" id="grayscale_button">Grayscale</button>
             <button type="button" class="btn btn-secondary" id="sepia_button">Sepia</button>
             <button type="button" class="btn btn-secondary" id="invert_button">Invert</button>
@@ -94,7 +98,7 @@
 <!--     
     <a id="acceleration">Gyro</a>
 
-    <a id="download_link">Download photo</a> -->
+     -->
 
     <script src="/bootstrap-5.3.3-dist/js/bootstrap.js"></script>
     <script src="jquery-3.7.1.js"></script>

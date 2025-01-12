@@ -9,16 +9,17 @@
     border: 1px solid black; /* Rahmen für bessere Sichtbarkeit */
 }
 
+/* Ensure the main containe takes up the full viewport */
 #container {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 100%;
-    max-height: auto;
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
-    padding: 20px; /* Optional: Add padding */
+    padding: 0px; /* Optional: Add padding */
 }
 
 #reference {
@@ -91,12 +92,14 @@
     pointer-events: none; /* Verhindert, dass die Linie die Interaktion mit dem Video blockiert */
 }
 
+/* Style for the video element */
 #webcam {
-    transform: scaleX(-1);
-    width: 100%; /* Constrain the width to 90% of the viewport width */
-    height: 100%;
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-width: 90vw; /* Constrain the width to 90% of the viewport width */
+    max-height: 90vh; /* Constrain the height to 90% of the viewport height */
+    border: 2px solid #ccc; /* Optional: Add a border */
+    border-radius: 10px; /* Optional: Add rounded corners */
 }
 
 #captured_photo {
@@ -130,15 +133,51 @@
 }
 
 
+/* Ensure the body takes up the full viewport */
 body {
-    background-color: black;
-    color: white;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: black; /* Optional: Set a background color */
+    color: white; /* Optional: Set text color */
 }
+
+/* Style for the buttons */
+button {
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #007bff; /* Optional: Set a background color */
+    color: white; /* Optional: Set text color */
+}
+
 
 .wholesite {
     display: flex;
     flex-direction: column;
-    height: 90vh; /* Full viewport height */
+    align-items: space-evenly;
+    height: 100vh; /* Full viewport height */
     width: 100vw; /* Full viewport width */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    margin-top: 0px;
+}
+
+.navbar_brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+    padding-right: 2px;
+    padding-left: 2px;
+    border: 1px solid white;
+    border-radius: 4px;
+
 }

@@ -147,6 +147,7 @@ function takePicture() {
 
         // Simulate a click on the "Editing" tab button
         document.querySelector('#pills-editing-tab').click();
+        console.log('Picture taken');
     } else {
         clearCanvas();
     }
