@@ -49,3 +49,101 @@
 .spacediv {
     width: 0.2rem;
 }
+
+
+#rectangle::before {
+    width: 100%;
+    height: 5px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+#rectangle::after {
+    width: 5px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#rectangle_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 2;
+}
+
+#center_line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    transform: translateY(-50%);
+    pointer-events: none; /* Verhindert, dass die Linie die Interaktion mit dem Video blockiert */
+}
+
+#webcam {
+    transform: scaleX(-1);
+    width: 100%;
+    height: auto;
+}
+
+#captured_photo {
+    width: 100%;
+    height: auto;
+    transform: scaleX(-1);
+}
+
+.title {
+    font-family: 'Arial', sans-serif;
+    font-size: 3em;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 1.2em;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    z-index: -1;
+    border-radius: 10px;
+}
+
+
+body {
+    background-color: black;
+    color: white;
+    margin: 0; /* Remove default margin */
+    width: 100vw; /* Ensure body takes full viewport width */
+    height: 100vh; /* Ensure body takes full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wholesite {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
