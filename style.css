@@ -70,6 +70,10 @@
     transform: translateX(-50%);
 }
 
+#rectangle.green::after, #rectangle.green::before{
+    background-color: green;
+}
+
 #rectangle_container {
     position: absolute;
     top: 0;

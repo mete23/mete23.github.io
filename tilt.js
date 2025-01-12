@@ -43,12 +43,20 @@ function rotateByGyro(acceleration) {
     //var angle = Math.atan2(acceleration.y, acceleration.x) * (180 / Math.PI);
     var angle = acceleration.x * 10;
     var div = document.querySelector('#rectangle');
-
+    
+    
     div.style.webkitTransform = 'rotate('+angle+'deg)'; 
     div.style.mozTransform    = 'rotate('+angle+'deg)'; 
     div.style.msTransform     = 'rotate('+angle+'deg)'; 
     div.style.oTransform      = 'rotate('+angle+'deg)'; 
     div.style.transform       = 'rotate('+angle+'deg)'; 
+
+    // Add or remove the 'green' class based on the angle
+    if (Math.abs(angle) < 5) {
+        div.classList.add('green');
+    } else {
+        div.classList.remove('green');
+    }
 }
 
 window.addEventListener("load", initGyro, false);
