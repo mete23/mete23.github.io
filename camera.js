@@ -1,21 +1,24 @@
-const photo_width = 1080; // Set a default width for the photo
-let photo_height = 0; // Will be computed
+// Set a default width for the photo
+const photo_width = 1080;
+
+// Will be computed later according to the webcam resolution
+let photo_height = 0;
+
+
 let streaming = false;
 
 let canvas = null;
 let capturedPhoto = null;
 let video = null;
 let downloadButton = null;
-let originalImageData = null; // Store the original image data
-let lastImageData = null; // Store the last image data
 
-function webcam(btn) {
-    if (btn === 'pause') {
-        video.pause();
-    } else {
-        video.play();
-    }
-}
+// Store the original image data
+let originalImageData = null;
+
+// Store the last image data
+let lastImageData = null;
+
+
 
 function init() {
     video = document.querySelector('#webcam');
@@ -77,42 +80,52 @@ function init() {
         applyFilter(applyGrayscale);
         event.preventDefault();
     }, false);
+
     sepiaButton.addEventListener('click', (event) => {
         applyFilter(applySepia);
         event.preventDefault();
     }, false);
+
     invertButton.addEventListener('click', (event) => {
         applyFilter(applyInvert);
         event.preventDefault();
     }, false);
+
     brightnessButton.addEventListener('click', (event) => {
         applyFilter(applyBrightness);
         event.preventDefault();
     }, false);
+
     contrastButton.addEventListener('click', (event) => {
         applyFilter(applyContrast);
         event.preventDefault();
     }, false);
+
     saturationButton.addEventListener('click', (event) => {
         applyFilter(applySaturation);
         event.preventDefault();
     }, false);
+
     blurButton.addEventListener('click', (event) => {
         applyFilter(applyBlur);
         event.preventDefault();
     }, false);
+
     sharpenButton.addEventListener('click', (event) => {
         applyFilter(applySharpen);
         event.preventDefault();
     }, false);
+
     hueRotateButton.addEventListener('click', (event) => {
         applyFilter(applyHueRotate);
         event.preventDefault();
     }, false);
+    
     resetButton.addEventListener('click', (event) => {
         resetImage();
         event.preventDefault();
     }, false);
+    
     undoButton.addEventListener('click', (event) => {
         undoLastEffect();
         event.preventDefault();
@@ -127,14 +140,20 @@ function init() {
     clearCanvas();
 }
 
-// Function to clear the canvas
+/**
+ * This function clears the Canvas where the Image is stored
+ */
 function clearCanvas() {
     const context = canvas.getContext('2d');
     context.fillStyle = '#AAA';
     context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-// Function to take a picture from the video stream
+
+/**
+ * This function can be used to take a picture with the webcam.
+ * It works by taking a Frame of the video stream.
+ */
 function takePicture() {
     const context = canvas.getContext('2d');
     if (photo_width && photo_height) {
@@ -156,7 +175,10 @@ function takePicture() {
     }
 }
 
-// Function to download the image
+/**
+ * This function can be used to download the taken image.
+ * It works by creating a link element and clicking on it.
+ */
 function downloadImage() {
     const data = canvas.toDataURL('image/png');
     const link = document.createElement('a');
@@ -302,7 +324,11 @@ function applySaturation() {
     updateCapturedPhoto();
 }
 
-// Function to apply blur filter to the captured photo
+/**
+ * Function to apply blur filter to the captured photo
+ * Be aware that the blur filter does not work on all
+ * mobile devices
+ */
 function applyBlur() {
     const context = canvas.getContext('2d');
     context.filter = 'blur(5px)';
@@ -311,7 +337,12 @@ function applyBlur() {
     updateCapturedPhoto();
 }
 
-// Function to apply sharpen filter to the captured photo
+
+/**
+ * Function to apply sharpen filter to the captured photo.
+ * Be aware that this filter does not work on
+ * all mobile devices.
+ */
 function applySharpen() {
     const context = canvas.getContext('2d');
     context.drawImage(capturedPhoto, 0, 0, canvas.width, canvas.height);
@@ -358,7 +389,11 @@ function applySharpen() {
     updateCapturedPhoto();
 }
 
-// Function to apply hue rotation filter to the captured photo
+/**
+ * Function to apply hue rotation filter to the captured photo.
+ * Be aware that this function may not work on IOS and only on some
+ * Android devices.
+ */
 function applyHueRotate() {
     const context = canvas.getContext('2d');
     context.filter = 'hue-rotate(90deg)';

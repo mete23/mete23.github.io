@@ -22,8 +22,11 @@
     padding: 0px; /* Optional: Add padding */
 }
 
-
-
+/**
+    * this is for a thin black horizontal line
+    * that is centered in the middle of the webcam
+    * and used to align the crosshair right.
+*/
 #reference {
     position: absolute;
     top: 0;
@@ -125,30 +128,20 @@
     position: relative;
 }
 
-.title::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 1.2em;
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-    z-index: -1;
-    border-radius: 10px;
-}
 
 
 /* Ensure the body takes up the full viewport */
 body {
     margin: 0;
-    width: 100vw;
+    width: 98vw;
     height: 100vh;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: black; /* Optional: Set a background color */
-    color: white; /* Optional: Set text color */
+    background-color: black;
+    color: white;
+    font-family: Verdana;
+
 }
 
 /* Style for the buttons */
@@ -159,11 +152,17 @@ button {
     border-radius: 5px;
     margin-top: 20px;
     cursor: pointer;
-    background-color: #007bff; /* Optional: Set a background color */
-    color: white; /* Optional: Set text color */
+    background-color: #007bff;
+    color: white;
 }
 
 
+/**
+    * The following styles are for the main container
+    * that holds the entire content.
+    * here it is ensured, that the main container takes up the full viewport,
+    * so the whole website can be displayed at once.
+*/
 .wholesite {
     display: flex;
     flex-direction: column;
@@ -173,6 +172,11 @@ button {
     margin-top: 0px;
 }
 
+
+/**
+    * The following styles are for the brand Photo Tool
+    * in the navbar.
+    */
 .navbar_brand {
     font-size: 1.5em;
     font-weight: bold;
@@ -183,11 +187,11 @@ button {
     z-index: 2;
     padding-right: 2px;
     padding-left: 2px;
-    border: 1px solid white;
+    border: 2px solid white;
     border-radius: 4px;
+    margin-left: 10px;
+    margin-right: 5px;
 }
-
-
 
 .editing_buttons {
     display: flex;
@@ -202,8 +206,8 @@ button {
     height: auto;
     max-width: 90vw; /* Constrain the width to 90% of the viewport width */
     max-height: 90vh; /* Constrain the height to 90% of the viewport height */
-    border: 2px solid #ccc; /* Optional: Add a border */
-    border-radius: 10px; /* Optional: Add rounded corners */
+    border: 2px solid #ccc;
+    border-radius: 10px;
     transform: scaleX(-1);
 }
 
@@ -218,11 +222,12 @@ button {
     padding: 0px; /* Optional: Add padding */
 }
 
-.info_container {
-    margin: 20px;
-    border: 2px solid white;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
-    align-self: center;
+.take_photo {
+    padding: 8px 16px;
+    margin-right: 4px;
+}
+
+.request_permission_button {
+    padding: 8px 16px;
+    margin-left: 4px;
 }

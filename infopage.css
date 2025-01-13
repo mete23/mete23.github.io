@@ -1,0 +1,42 @@
+
+.info_container {
+    margin: 20px;
+    border: 2px solid white;
+    border-radius: 25px;
+    margin: 10px;
+    padding: 10px;
+    align-self: center;
+}
+
+
+.verticalLine {
+    border-left:thick solid #ff0000;
+}
+
+.roundBox {
+    border-radius: 30px;
+    border: 2px solid white;
+    padding: 10px;
+    margin: 20px;
+    background-color: rgb(42, 43, 59);
+    font-family: Verdana;
+}
+
+.roundBox h3, .roundBox h2{
+    display: inline-block;
+    border-radius: 25px;
+    border: 2px solid white;
+    padding: 8px;
+    background-color: rgb(23, 23, 32);
+    font-family: Verdana;
+    color: white;
+}
+
+.roundBox h2 {
+    border: 3px solid white;
+}
+
+.roundBox h3.alert {
+    border: 2px solid yellow;
+    color: yellow;
+}

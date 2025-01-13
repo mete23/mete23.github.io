@@ -11,6 +11,8 @@ function initGyro() {
                     console.log("Permission granted");
                     window.addEventListener('devicemotion', (event) => {
                         const acceleration = event.accelerationIncludingGravity;
+
+                        // Display the acceleration values in the info page
                         document.getElementById('acceleration').innerText =
                             `Acceleration: x = ${acceleration.x.toFixed(2)}, y = ${acceleration.y.toFixed(2)}, z = ${acceleration.z.toFixed(2)}`;
                         rotateByGyro(acceleration);
@@ -25,6 +27,7 @@ function initGyro() {
             });
     } else if (typeof(window.DeviceMotionEvent) !== "undefined") {
         console.log("DeviceMotionEvent is available without permission request");
+        
         // For devices that do not require permission
         window.addEventListener('devicemotion', (event) => {
             const acceleration = event.accelerationIncludingGravity;
@@ -38,6 +41,11 @@ function initGyro() {
     }
 }
 
+/**
+ * This function is used to rotate the Cross by
+ * the angle of the device.
+ * For this the acceleration values of he Accelerometer are used.
+ */
 function rotateByGyro(acceleration) {
     // Calculate the tilt angle using atan2
     //var angle = Math.atan2(acceleration.y, acceleration.x) * (180 / Math.PI);
