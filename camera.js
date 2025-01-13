@@ -27,6 +27,7 @@ function init() {
     const sepiaButton = document.querySelector('#sepia_button');
     const invertButton = document.querySelector('#invert_button');
     const brightnessButton = document.querySelector('#brightness_button');
+    const darknessButton = document.querySelector('#darkness_button');
     const contrastButton = document.querySelector('#contrast_button');
     const saturationButton = document.querySelector('#saturation_button');
     const blurButton = document.querySelector('#blur_button');
@@ -39,7 +40,10 @@ function init() {
     canvas = document.querySelector('#photo_canvas');
     capturedPhoto = document.querySelector('#captured_photo');
 
-    // Start the video stream
+    /**
+     * Start the video stream and display it in the video element.
+     * The source of the video element is the webcam stream.
+     */
     if (navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true, audio: false })
             .then(function (stream) {
@@ -50,8 +54,13 @@ function init() {
                 console.log(e);
             });
     }
+    
 
-    // Event listener for video canplay event
+    /**
+     * Adds Event Listener to the video element to check if the video is ready to play.
+     * If the video is ready to play, the video element is resized to
+     * the width of the webcam stream.
+     */
     video.addEventListener('canplay', (event) => {
         if (!streaming) {
             photo_height = (video.videoHeight / video.videoWidth) * photo_width;
@@ -93,6 +102,11 @@ function init() {
 
     brightnessButton.addEventListener('click', (event) => {
         applyFilter(applyBrightness);
+        event.preventDefault();
+    }, false);
+
+    darknessButton.addEventListener('click', (event) => {
+        applyFilter(applyDarkness);
         event.preventDefault();
     }, false);
 
@@ -141,7 +155,8 @@ function init() {
 }
 
 /**
- * This function clears the Canvas where the Image is stored
+ * This function clears the Canvas where the Image is stored.
+ * It works by filling the Canvas with a grey color.
  */
 function clearCanvas() {
     const context = canvas.getContext('2d');
@@ -194,7 +209,10 @@ function applyFilter(filterFunction) {
     filterFunction();
 }
 
-// Function to reset the image to the original
+
+/**
+ * This function resets the image to the original image.
+ */
 function resetImage() {
     const context = canvas.getContext('2d');
     if (originalImageData) {
@@ -203,7 +221,11 @@ function resetImage() {
     }
 }
 
-// Function to undo the last effect
+/**
+ * This function undoes the last effect applied to the image.
+ * It works by putting the last image data back to the canvas.
+ * But be aware that this function only works for one undo step.
+ */
 function undoLastEffect() {
     const context = canvas.getContext('2d');
     if (lastImageData) {
@@ -279,6 +301,23 @@ function applyBrightness() {
         data[i] = data[i] + 40; // Red
         data[i + 1] = data[i + 1] + 40; // Green
         data[i + 2] = data[i + 2] + 40; // Blue
+    }
+
+    context.putImageData(imageData, 0, 0);
+    updateCapturedPhoto();
+}
+
+// Function to apply darkness filter to the captured photo
+function applyDarkness() {
+    const context = canvas.getContext('2d');
+    context.drawImage(capturedPhoto, 0, 0, canvas.width, canvas.height);
+    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+
+    for (let i = 0; i < data.length; i += 4) {
+        data[i] = data[i] - 40; // Red
+        data[i + 1] = data[i + 1] - 40; // Green
+        data[i + 2] = data[i + 2] - 40; // Blue
     }
 
     context.putImageData(imageData, 0, 0);
